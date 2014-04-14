@@ -1,0 +1,63 @@
+<!-- location 1711 -->
+<head>
+	<title>LendLib</title>
+	<script>
+		<!-- lists.remove({_id:(lists.findOne({Category:'Fraggles'})['_id'])}) -->
+	</script>
+</head>
+
+<body>
+	<div style="float:right; margin-right:20px;">
+		{{> loginButtons align="right"}}
+	</div>
+	<div id="lendlib">
+		<div id=categories-container>
+			{{> categories}}
+		</div>
+		<div id="list">
+			{{> list}}
+		</div>
+	</div>
+</body>
+
+<template name='categories'>
+	<h2 class='title'><strong>my stuff</strong></h2>
+	<div id='category_buttons' class='btn-group'>
+		{{#if new_cat}}
+			<div><input type="text" id="add-category"></div>
+		{{else}}
+			<div class="category btn btn-primary" id='btnNewCat'>&plus;</div>
+		{{/if}}
+		<div class="category btn btn-primary" id='btnDelCat'>&minus;</div>
+		{{#each lists}}
+			<div class="category btn {{list_status}}" id="{{_id}}">
+				{{Category}}
+			</div>
+		{{/each}}
+	</div>
+</template>
+
+<template name='list'>
+	<ul id="lending_list">
+		{{#each items}}
+			<li class="lending_item alert">
+				<button type="button" class="close delete_item" id="{{Name}}">x</button>
+				{{Name}}
+				{{#if lendee_editing}}
+					<input type="text" class="span2 pull-right" id="edit_lendee"/>
+				{{else}}
+					<div class="pull-right label {{LendClass}}" id="lendee">
+						{{Lendee}}
+					</div>
+				{{/if}}
+			</li>
+		{{/each}}
+		{{#if list_selected}}
+			<li class="alert-success" id="btnAddItem">&plus;
+				{{#if list_adding}}
+					<input type="text" class="span4" id="item_to_add" size="32">
+				{{/if}}
+			</li>
+		{{/if}}
+	</ul>
+</template>

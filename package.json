@@ -1,0 +1,11 @@
+{
+  "name": "big_lenders",
+  "subdomain": "big_lenders",
+  "scripts": {
+    "start": "node server"
+  },
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
